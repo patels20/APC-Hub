@@ -1,0 +1,1 @@
+This folder will contain the python files needed to run the CURSE program
