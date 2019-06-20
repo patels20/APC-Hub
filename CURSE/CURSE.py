@@ -19,7 +19,15 @@ class User:
         self.last_name = last_name      # User's Last Name
         self.passcode = passcode        # Passcode is used for initial Login
 
+#create an inherited class for the Professor:
+class Faculty(User):
+    def __init__(self):
+        User.__init__(self,user_id="prof",first_name="Boring",last_name="idiot",passcode="hw")
+        # initialize the user parts of the Professor class
 
+        self.crns = []                     #list the CRN's that the Professor is teaching
+
+#Create an inherited class for the Student:
 class Student(User):
     def __init__(self, major="CM"):
         User.__init__(self, user_id="123", first_name="Ben", last_name="Dover", passcode="321")
@@ -28,13 +36,11 @@ class Student(User):
         self.major = major              # So What's Your Major?
         self.crns = []                  # List of courses that the student is registered in
 
-
-
-
-
 def create_test_student(entire_userbase):   # Generates a single student and adds it to the database
     entire_userbase.append(Student())       # no input parameters to a new student means the default will be used
 
+def create_test_professor(entire_userbase): #Generate a Professor to test and add it to the database
+    entire_userbase.append(Faculty())       # no input parameters to a new Professor means the default will be used
 
 def log_on( userbase, activeuser):
     temp = input("\nENTER USERNAME:\n")    # take in user log on info
