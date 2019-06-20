@@ -1,16 +1,14 @@
 # Ameer Noufal / Dan Smith de Paz
 # APC - Assignment 4
-from enum import Enum
+
 from Classes import*
 
-class System_state(Enum):  # datatype created to keep track of what state the program is in
-    log_on = 1
-    run_student = 2  # there will be more of these
-    error = 3
+
 
 def create_test_student(entire_userbase):   # Generates a single student and adds it to the database
     entire_userbase.append(Student())       # no input parameters to a new student means the default will be used
-
+def create_test_course(entire_classbase):
+    entire_classbase.append(Course())
 
 def log_on( userbase, activeuser):
     temp = input("\nENTER USERNAME:\n")    # take in user log on info
@@ -34,22 +32,46 @@ def log_on( userbase, activeuser):
     activeuser.clear() # just to make sure that there's no active user if the logon failed
     return System_state.log_on  #
 
-def run_student(userbase, activeuser): # Student Functionality
 
-    temp = input("\nWhich Option?\n0 - Logout\n1 - Something else maybe\n")
+def register_course(coursebase,activeuser):
+    #  This function has the user input a CRN-
+    #  code and attempts to register for it
+
+    temp = input("Input the crn value of the course you want to register")
+    for course in coursebase:
+        if temp == course.crn:                      # if the course exists attempt to register the active user
+            course.add_student(activeuser[0])
+            print("\nsuccessfuly registered for:" + temp + "\n")
+            return
+    print("\nFailed to register\n")
+    return
+
+
+def run_student(coursebase, activeuser): # Student Functionality
+
+    temp = input("\nWhich Option?\n0 - Logout\n1 - Add a course\n")
 
     if temp == "0":    # logs the student out
         print("\nYOU HAVE BEEN LOGGED OUT\n")
         activeuser.clear()  # clears the active user list
         return System_state.log_on  # back to the logon
-    elif temp == "1":   # this isn't anything right now just a place holder
-        print("\nYou Fool, You fell for one of the classic blunders!\n")
+    elif temp == "1":   # this is the register for a class functionality
+
+        register_course(coursebase, activeuser) # Attempt to register for a class
         return System_state.run_student
+
+
+
 
 def main():  # The logic of the program will happen in here to make sure nearly everything is defined in a method
     current_state = System_state(1)     # The Initialized state of the program is log_on to run that specific functionality
-    test_database = []                  # hopefully this gets replaced with some sort of actual database system
-    create_test_student(test_database)  # Adds a student to the "database"
+
+    test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
+    create_test_student(test_userbase)  # Adds a student to the "database"
+
+    test_coursebase = []                # Temporary class database
+    create_test_course(test_coursebase) # Adds a class to the "database"
+
 
     active_user = []                    # this is a temporary workaround until someone thinks of a better way to pass data around
                                         # This user's data is saved for refrence
@@ -57,11 +79,11 @@ def main():  # The logic of the program will happen in here to make sure nearly 
 
     while 1:                            # infinite loop to run infinitely
         if current_state == System_state.log_on:   # switch-case depending on the state of the program
-            current_state = log_on( test_database, active_user)  # the function returns the new state of the system
+            current_state = log_on( test_userbase, active_user)  # the function returns the new state of the system
         elif current_state == System_state.error:                # if there's an error the program ends to let you know there's some flawed code
             exit("There was an error")
         elif current_state == System_state.run_student:          # This if will execute the functionality of the student
-            current_state = run_student(test_database, active_user)
+            current_state = run_student(test_coursebase, active_user)
 
 main()  # Hopefully the only function that is run globally
 
