@@ -1,46 +1,16 @@
 # Ameer Noufal / Dan Smith de Paz
 # APC - Assignment 4
 from enum import Enum
+from Classes import*
 
 class System_state(Enum):  # datatype created to keep track of what state the program is in
     log_on = 1
     run_student = 2  # there will be more of these
     error = 3
 
-
-class User:
-    # Base Class that all classes are built off of
-    def __init__(self, user_id="", first_name="", last_name="", passcode=""):
-        # This is the initialization function
-        # if no paramaters are passed into it, the default listed will be used
-
-        self.user_id = user_id          # User ID - It must be UNIQUE
-        self.first_name  = first_name   # User's First Name
-        self.last_name = last_name      # User's Last Name
-        self.passcode = passcode        # Passcode is used for initial Login
-
-#create an inherited class for the Professor:
-class Faculty(User):
-    def __init__(self):
-        User.__init__(self,user_id="prof",first_name="Boring",last_name="idiot",passcode="hw")
-        # initialize the user parts of the Professor class
-
-        self.crns = []                     #list the CRN's that the Professor is teaching
-
-#Create an inherited class for the Student:
-class Student(User):
-    def __init__(self, major="CM"):
-        User.__init__(self, user_id="123", first_name="Ben", last_name="Dover", passcode="321")
-        # initialize the user parts of the student class
-
-        self.major = major              # So What's Your Major?
-        self.crns = []                  # List of courses that the student is registered in
-
 def create_test_student(entire_userbase):   # Generates a single student and adds it to the database
     entire_userbase.append(Student())       # no input parameters to a new student means the default will be used
 
-def create_test_professor(entire_userbase): #Generate a Professor to test and add it to the database
-    entire_userbase.append(Faculty())       # no input parameters to a new Professor means the default will be used
 
 def log_on( userbase, activeuser):
     temp = input("\nENTER USERNAME:\n")    # take in user log on info
