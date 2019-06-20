@@ -4,16 +4,24 @@
 from Classes import*
 
 
-
 def create_test_student(entire_userbase):   # Generates a single student and adds it to the database
     entire_userbase.append(Student())       # no input parameters to a new student means the default will be used
+
+
 def create_test_course(entire_classbase):
     entire_classbase.append(Course())
+
+
+def create_initial_admin(entire_userbase):  # Generate a admin to be logged onto so that they may add other students
+    # and faculty
+    entire_userbase.append(Admin())  # no input parameters to a new admin means that the default is used.
+
+
+
 
 def log_on( userbase, activeuser):
     temp = input("\nENTER USERNAME:\n")    # take in user log on info
     orary = input("\nENTER PASSCODE:\n")     #
-
 
     for dude in userbase:                   # Increment's through the list of people in the database
         if temp == dude.user_id and orary == dude.passcode:  # If the credentials match!
@@ -68,9 +76,11 @@ def main():  # The logic of the program will happen in here to make sure nearly 
 
     test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
     create_test_student(test_userbase)  # Adds a student to the "database"
+    create_initial_admin(test_userbase)  # Adds an admin from the "database"
 
     test_coursebase = []                # Temporary class database
     create_test_course(test_coursebase) # Adds a class to the "database"
+
 
 
     active_user = []                    # this is a temporary workaround until someone thinks of a better way to pass data around

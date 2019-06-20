@@ -26,6 +26,18 @@ class Student(User):
         self.crns = []                  # List of courses that the student is registered in
 
 
+# Create an inherited class for the admin:
+class Admin(User):
+    def __init__(self):
+        User.__init__(self, user_id="admin", first_name="stupid", last_name="cunt", passcode="admin1")
+
+
+# initialize the user parts of the admin class
+
+
+
+
+
 class Course():
     def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2 ):
         self.crn = crn                  # Unique identifier
