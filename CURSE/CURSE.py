@@ -58,7 +58,7 @@ def register_course(coursebase, userbase, activeuser):
                         print("\nsuccessfuly registered for:" + temp + "\n")
                         return                  # Stops the method because the task is done
                 print("\nSTUDENT ADDED TO COURSE ROSTER BUT COURSE NOT ADDED TO STUDENT SCHEDULE\nThis should never happen\n")
-            return
+            return # return if the course requested is at capacity
     print("\nFailed to register\n")
     return
 
