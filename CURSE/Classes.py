@@ -6,6 +6,7 @@ class System_state(Enum):  # datatype created to keep track of what state the pr
     run_student = 2  # there will be more of these
     error = 3
     run_admin = 4
+    run_proffesor = 5
 
 
 class User:
@@ -36,6 +37,11 @@ class Student(User):
                     break
 
 
+class Proffesor(User):
+    def __init__(self, crn="33"):
+        User.__init__(self, user_id = "a", first_name = "yeet",last_name = "teey", passcode = "a")
+        self.crns = []
+        self.crns.append(crn)
 
 
 

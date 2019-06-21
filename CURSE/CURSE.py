@@ -7,6 +7,8 @@ from Classes import*
 def create_test_student(entire_userbase):   # Generates a single student and adds it to the database
     entire_userbase.append(Student())       # no input parameters to a new student means the default will be used
 
+def create_test_teacher(entire_userbase):
+    entire_userbase.append(Proffesor())
 
 def create_test_course(entire_classbase):
     entire_classbase.append(Course())
@@ -15,6 +17,8 @@ def create_test_course(entire_classbase):
 def create_initial_admin(entire_userbase):  # Generate a admin to be logged onto so that they may add other students
     # and faculty
     entire_userbase.append(Admin())  # no input parameters to a new admin means that the default is used.
+
+
 
 
 def log_on( userbase, activeuser):
@@ -33,7 +37,9 @@ def log_on( userbase, activeuser):
             if dude.__class__ == Admin:
                 print("\n Administrator : " + activeuser[0].first_name + " " + activeuser[0].last_name + " has logged on\n")
                 return System_state.run_admin
-            # ADD CASES FOR OTHER USER TYPES
+            if dude.__class__ == Proffesor:
+                print("\n Welcome " + activeuser[0].first_name)
+                return System_state.run_proffesor
 
             return System_state.error # something's wrong if this happens
 
@@ -84,7 +90,7 @@ def run_student(coursebase, userbase, activeuser):  # Student Functionality
         print("\n INVALID INPUT\n")
         return System_state.run_student
 
-def run_admin(test_coursebase, test_userbase, activeuser):
+def run_admin(coursebase, userbase, activeuser):
     temp = input("\nWhich Option?\n0 - Logout\n EE \n")
     if temp == "0":  # logs the user out
         return logout(activeuser)
@@ -92,12 +98,22 @@ def run_admin(test_coursebase, test_userbase, activeuser):
         print("\n INVALID INPUT\n")
         return System_state.run_admin
 
+def run_proffesor(coursebase, userbase, activeuser):
+    temp = input("\nWhich Option?\n0 - Logout\n EE \n")
+    if temp == "0":  # logs the user out
+        return logout(activeuser)
+    else:
+        print("\n INVALID INPUT\n")
+        return System_state.run_proffesor
+
+
 def main():  # The logic of the program will happen in here to make sure nearly everything is defined in a method
     current_state = System_state(1)     # The Initialized state of the program is log_on to run that specific functionality
 
     test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
     create_test_student(test_userbase)  # Adds a student to the "database"
     create_initial_admin(test_userbase)  # Adds an admin from the "database"
+    create_test_teacher(test_userbase)
 
     test_coursebase = []                # Temporary class database
     create_test_course(test_coursebase) # Adds a class to the "database"
@@ -115,6 +131,8 @@ def main():  # The logic of the program will happen in here to make sure nearly 
             current_state = run_student(test_coursebase, test_userbase, active_user)
         elif current_state == System_state.run_admin:
             current_state = run_admin(test_coursebase, test_userbase, active_user)
+        elif current_state == System_state.run_proffesor:
+            current_state = run_proffesor(test_coursebase, test_userbase, active_user)
 
 main()  # Hopefully the only function that is run globally
 
