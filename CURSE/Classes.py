@@ -19,16 +19,23 @@ class User:
         self.last_name = last_name      # User's Last Name
         self.passcode = passcode        # Passcode is used for initial Login
 
-
 class Student(User):
     def __init__(self, major="CM"):
-        User.__init__(self, user_id="123", first_name="Ben", last_name="Dover", passcode="321")
+        User.__init__(self, user_id="", first_name="Ben", last_name="Dover", passcode="")
         # initialize the user parts of the student class
 
         self.major = major              # So What's Your Major?
         self.crns = []                  # List of courses that the student is registered in
     def add_course(self,crn_code):
         self.crns.append(crn_code)
+    def view_schedule(self, coursebase):
+        for crn in self.crns:
+            for course in coursebase:
+                if crn == course.crn:
+                    course.print_course()
+                    break
+
+
 
 
 
@@ -59,3 +66,9 @@ class Course():
         else:
             self.roster.append(student)         # if there's no conflicts add the student to the roster
             return 1
+    def print_course(self):
+        print("\nCrn code: " + self.crn + "   Course: " + self.name + "   Instructor: " + self.instructor + "   Major: " + self.major + " Capacity: " + str(self.max_size)  + " Open Seats: " + str(self.max_size - len(self.roster)))
+
+        #  "   + " Open Seats: " + (self.max_size - len(self.roster)) +  " Capacity: " + self.max_size)
+
+
