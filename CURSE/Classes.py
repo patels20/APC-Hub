@@ -42,6 +42,14 @@ class Proffesor(User):
         User.__init__(self, user_id = "a", first_name = "yeet",last_name = "teey", passcode = "a")
         self.crns = []
         self.crns.append(crn)
+    def view_rosters(self,coursebase, userbase):
+        for crn in self.crns:
+            for course in coursebase:
+                if crn == course.crn:
+                    course.print_course()
+                    course.print_roster()
+                    break
+
 
 
 
@@ -74,7 +82,7 @@ class Course():
             return 1
     def print_course(self):
         print("\nCrn code: " + self.crn + "   Course: " + self.name + "   Instructor: " + self.instructor + "   Major: " + self.major + " Capacity: " + str(self.max_size)  + " Open Seats: " + str(self.max_size - len(self.roster)))
-
-        #  "   + " Open Seats: " + (self.max_size - len(self.roster)) +  " Capacity: " + self.max_size)
-
+    def print_roster(self):
+        for x in self.roster:
+            print(x.first_name)
 
