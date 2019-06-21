@@ -1,9 +1,12 @@
-
 from enum import Enum
+
+
 class System_state(Enum):  # datatype created to keep track of what state the program is in
     log_on = 1
     run_student = 2  # there will be more of these
     error = 3
+    run_admin = 4
+
 
 class User:
     # Base Class that all classes are built off of
@@ -24,38 +27,35 @@ class Student(User):
 
         self.major = major              # So What's Your Major?
         self.crns = []                  # List of courses that the student is registered in
+    def add_course(self,crn_code):
+        self.crns.append(crn_code)
+
 
 
 # Create an inherited class for the admin:
 class Admin(User):
     def __init__(self):
-        User.__init__(self, user_id="admin", first_name="stupid", last_name="cunt", passcode="admin1")
-
-
-# initialize the user parts of the admin class
-
-
-
+        User.__init__(self, user_id="admin", first_name="Grande", last_name="Barriga", passcode="admin1")
 
 
 class Course():
-    def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2 ):
+    def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs" ):
         self.crn = crn                  # Unique identifier
         self.name = name                # Name of the course
         self.instructor = instructor    # Name of the Teacher user that teaches
         self.roster = []                # List of Student Users Currently registered
         self.max_size = max_size        # Size limit of the the course
+        self.major = major
 
         self.length_course = length_course     # the actual length of the course
         self.times = []                 # The Index values correspond with each other
         self.days = []                  #
+
+
     def add_student(self, student):
         if len(self.roster) >= self.max_size:  # Checks for course capacity
             print("ERROR COURSE AT CAPACITY")
-            #return System_state.error            # Wait untill implemented
+            return 0            # Wait untill implemented
         else:
             self.roster.append(student)         # if there's no conflicts add the student to the roster
-
-
-
-
+            return 1
