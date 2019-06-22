@@ -1,17 +1,25 @@
 # Ameer Noufal / Dan Smith de Paz
 # APC - Assignment 4
 
-from Classes import*
+from Classes import *
 
 
-def create_test_student(entire_userbase):   # Generates a single student and adds it to the database
-    entire_userbase.append(Student())       # no input parameters to a new student means the default will be used
+def create_test_student(entire_userbase):  # Generates a single student and adds it to the database
+    entire_userbase.append(Student())  # no input parameters to a new student means the default will be used
+
 
 def create_test_teacher(entire_userbase):
     entire_userbase.append(Proffesor())
 
+
 def create_test_course(entire_classbase):
     entire_classbase.append(Course())
+
+
+def add_course(test_coursebase):  # Create a new course with input information. Right now only trying to change the CRN
+    temp = input("what is the CRN?") # get the new CRN (this will soon be all of the course info
+    newcourse = Course(temp)        # create a course object with the new course CRN
+    test_coursebase.append(Course(temp)) # add it to the 'database'
 
 
 def create_initial_admin(entire_userbase):  # Generate a admin to be logged onto so that they may add other students
@@ -19,32 +27,31 @@ def create_initial_admin(entire_userbase):  # Generate a admin to be logged onto
     entire_userbase.append(Admin())  # no input parameters to a new admin means that the default is used.
 
 
+def log_on(userbase, activeuser):
+    temp = input("\nENTER USERNAME:\n")  # take in user log on info
+    orary = input("\nENTER PASSCODE:\n")  #
 
-
-def log_on( userbase, activeuser):
-    temp = input("\nENTER USERNAME:\n")    # take in user log on info
-    orary = input("\nENTER PASSCODE:\n")     #
-
-    for dude in userbase:                   # Increment's through the list of people in the database
+    for dude in userbase:  # Increment's through the list of people in the database
         if temp == dude.user_id and orary == dude.passcode:  # If the credentials match!
             # save the user info to the list
-            activeuser.clear()          # clear the list to make sure it's empty before adding
-            activeuser.append(dude)     # add the user to the list for future reference
+            activeuser.clear()  # clear the list to make sure it's empty before adding
+            activeuser.append(dude)  # add the user to the list for future reference
             # This if block changes the state of the program depending on what class the user is
             if dude.__class__ == Student:
-                print("\n Welcome " + activeuser[0].first_name) # greets the user
-                return System_state.run_student # returns the new state of the program
+                print("\n Welcome " + activeuser[0].first_name)  # greets the user
+                return System_state.run_student  # returns the new state of the program
             if dude.__class__ == Admin:
-                print("\n Administrator : " + activeuser[0].first_name + " " + activeuser[0].last_name + " has logged on\n")
+                print("\n Administrator : " + activeuser[0].first_name + " " + activeuser[
+                    0].last_name + " has logged on\n")
                 return System_state.run_admin
             if dude.__class__ == Proffesor:
                 print("\n Welcome " + activeuser[0].first_name)
                 return System_state.run_proffesor
 
-            return System_state.error # something's wrong if this happens
+            return System_state.error  # something's wrong if this happens
 
     print(" INCORRECT USERNAME OR PASSCODE\n")  # Tell's the user they Goofed
-    activeuser.clear() # just to make sure that there's no active user if the logon failed
+    activeuser.clear()  # just to make sure that there's no active user if the logon failed
     return System_state.log_on  #
 
 
@@ -54,34 +61,38 @@ def register_course(coursebase, userbase, activeuser):
 
     temp = input("Input the crn value of the course you want to register :\n")
     for course in coursebase:
-        if temp == course.crn:                      # if the course exists attempt to register the active user
-            orary = course.add_student(activeuser[0]) #this function will check if the student can be added to the course and return a 1 if successfull
-            if orary:      # Execute this code if the student is able to be registered
-                for dude in userbase:           #finds the user in the database
+        if temp == course.crn:  # if the course exists attempt to register the active user
+            orary = course.add_student(activeuser[
+                                           0])  # this function will check if the student can be added to the course and return a 1 if successfull
+            if orary:  # Execute this code if the student is able to be registered
+                for dude in userbase:  # finds the user in the database
                     if dude == activeuser[0]:
-                        dude.add_course(temp)   # adds the crn code to the database
-                        activeuser[0] = dude    # updates the active user data
+                        dude.add_course(temp)  # adds the crn code to the database
+                        activeuser[0] = dude  # updates the active user data
                         print("\nsuccessfuly registered for:" + temp + "\n")
-                        return                  # Stops the method because the task is done
-                print("\nSTUDENT ADDED TO COURSE ROSTER BUT COURSE NOT ADDED TO STUDENT SCHEDULE\nThis should never happen\n")
-            return # return if the course requested is at capacity
+                        return  # Stops the method because the task is done
+                print(
+                    "\nSTUDENT ADDED TO COURSE ROSTER BUT COURSE NOT ADDED TO STUDENT SCHEDULE\nThis should never happen\n")
+            return  # return if the course requested is at capacity
     print("\nFailed to register\n")
     return
 
 
-def logout(activeuser):                 # this method is called when the program needs to return to the login state
-    print("\n" + activeuser[0].first_name +" HAS BEEN LOGGED OUT\n")
+def logout(activeuser):  # this method is called when the program needs to return to the login state
+    print("\n" + activeuser[0].first_name + " HAS BEEN LOGGED OUT\n")
     activeuser.clear()  # clears the active user list
     return System_state.log_on  # back to the logon
 
 
 def run_student(coursebase, userbase, activeuser):  # Student Functionality
     temp = input("\nWhich Option?\n0 - Logout\n1 - Register for a course\n2 - View schedule\n")
-    if temp == "0":    # logs the student out
-        return logout(activeuser) #this function returns the proper state meaning the value it returns will be returned
-    elif temp == "1":   # this is the register for a class functionality
+    if temp == "0":  # logs the student out
+        return logout(
+            activeuser)  # this function returns the proper state meaning the value it returns will be returned
+    elif temp == "1":  # this is the register for a class functionality
 
-        register_course(coursebase, userbase, activeuser) # Attempt to register for a class then keep the user logged on
+        register_course(coursebase, userbase,
+                        activeuser)  # Attempt to register for a class then keep the user logged on
         return System_state.run_student
     elif temp == "2":
         activeuser[0].view_schedule(coursebase)
@@ -90,23 +101,29 @@ def run_student(coursebase, userbase, activeuser):  # Student Functionality
         print("\n INVALID INPUT\n")
         return System_state.run_student
 
+
 def run_admin(coursebase, userbase, activeuser):
-    temp = input("\nWhich Option?\n0 - Logout\n1- view course \n")
+    temp = input("\nWhich Option?\n0 - Logout\n1- view course \n2- add course to roster")
     if temp == "0":  # logs the user out
         return logout(activeuser)
-    elif temp == "1":
-        print(activeuser[0].view_rosters(coursebase,userbase))
+    elif temp == "1":  # view the courses and their information all printed out.
+        print(activeuser[0].view_rosters(coursebase, userbase))
+        return System_state.run_admin
+    elif temp == "2":  # here should be a button to add a course to the course database.
+        add_course(coursebase)
+        print("here should be a function to add a course...")
         return System_state.run_admin
     else:
         print("\n INVALID INPUT\n")
         return System_state.run_admin
+
 
 def run_proffesor(coursebase, userbase, activeuser):
     temp = input("\nWhich Option?\n0 - Logout\n1 - View Class rosters \n")
     if temp == "0":  # logs the user out
         return logout(activeuser)
     elif temp == "1":
-        activeuser[0].view_rosters(coursebase,userbase)
+        activeuser[0].view_rosters(coursebase, userbase)
         return System_state.run_proffesor
     else:
         print("\n INVALID INPUT\n")
@@ -114,33 +131,33 @@ def run_proffesor(coursebase, userbase, activeuser):
 
 
 def main():  # The logic of the program will happen in here to make sure nearly everything is defined in a method
-    current_state = System_state(1)     # The Initialized state of the program is log_on to run that specific functionality
+    current_state = System_state(1)  # The Initialized state of the program is log_on to run that specific functionality
 
-    test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
+    test_userbase = []  # hopefully this gets replaced with some sort of actual database system
     create_test_student(test_userbase)  # Adds a student to the "database"
     create_initial_admin(test_userbase)  # Adds an admin from the "database"
     create_test_teacher(test_userbase)
 
-    test_coursebase = []                # Temporary class database
-    create_test_course(test_coursebase) # Adds a class to the "database"
+    test_coursebase = []  # Temporary class database
+    create_test_course(test_coursebase)  # Adds a class to the "database"
 
-    active_user = []                    # this is a temporary workaround until someone thinks of a better way to pass data around
-                                        # This user's data is saved for refrence
-                                        # there should never be more than 1 item in this list
+    active_user = []  # this is a temporary workaround until someone thinks of a better way to pass data around
+    # This user's data is saved for refrence
+    # there should never be more than 1 item in this list
 
-    while 1:                            # infinite loop to run infinitely
-        if current_state == System_state.log_on:   # switch-case depending on the state of the program
+    while 1:  # infinite loop to run infinitely
+        if current_state == System_state.log_on:  # switch-case depending on the state of the program
             current_state = log_on(test_userbase, active_user)  # the function returns the new state of the system
-        elif current_state == System_state.error:                # if there's an error the program ends to let you know there's some flawed code
+        elif current_state == System_state.error:  # if there's an error the program ends to let you know there's some flawed code
             exit("There was an error")
-        elif current_state == System_state.run_student:          # This if will execute the functionality of the student
+        elif current_state == System_state.run_student:  # This if will execute the functionality of the student
             current_state = run_student(test_coursebase, test_userbase, active_user)
         elif current_state == System_state.run_admin:
             current_state = run_admin(test_coursebase, test_userbase, active_user)
         elif current_state == System_state.run_proffesor:
             current_state = run_proffesor(test_coursebase, test_userbase, active_user)
 
-main()  # Hopefully the only function that is run globally
 
+main()  # Hopefully the only function that is run globally
 
 # end of file
