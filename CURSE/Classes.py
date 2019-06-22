@@ -55,9 +55,17 @@ class Proffesor(User):
 
 # Create an inherited class for the admin:
 class Admin(User):
-    def __init__(self):
+    def __init__(self, crn = "33"):
         User.__init__(self, user_id="admin", first_name="Grande", last_name="Barriga", passcode="admin1")
-
+        self.crns = []
+        self.crns.append(crn)
+    def view_rosters(self,coursebase, userbase):
+        for crn in self.crns:
+            for course in coursebase:
+                if crn == course.crn:
+                    course.print_course()
+                    course.print_roster()
+                    break
 
 class Course():
     def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs" ):
@@ -85,4 +93,3 @@ class Course():
     def print_roster(self):
         for x in self.roster:
             print(x.first_name)
-

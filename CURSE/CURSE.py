@@ -91,9 +91,12 @@ def run_student(coursebase, userbase, activeuser):  # Student Functionality
         return System_state.run_student
 
 def run_admin(coursebase, userbase, activeuser):
-    temp = input("\nWhich Option?\n0 - Logout\n EE \n")
+    temp = input("\nWhich Option?\n0 - Logout\n1- view course \n")
     if temp == "0":  # logs the user out
         return logout(activeuser)
+    elif temp == "1":
+        print(activeuser[0].view_rosters(coursebase,userbase))
+        return System_state.run_admin
     else:
         print("\n INVALID INPUT\n")
         return System_state.run_admin
