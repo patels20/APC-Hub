@@ -1,1 +1,6 @@
-FILL ME PLS
+- This is where the code will live
+- From now on every function/class that is made will get it's own file so we can all work on different things at the same time
+- functions end with _f
+- classes end with _c
+- move the old files out of the project
+- Drop the folders in the project directory and run the main file in the functions folder. It should still work fine
