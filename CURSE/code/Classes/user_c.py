@@ -1,6 +1,6 @@
 class User:
     # Base Class that all classes are built off of
-    def __init__(self, user_id="", first_name="", last_name="", passcode=""):
+    def __init__(self, user_id="7", first_name="7", last_name="7", passcode="7"):
         # This is the initialization function
         # if no paramaters are passed into it, the default listed will be used
 
