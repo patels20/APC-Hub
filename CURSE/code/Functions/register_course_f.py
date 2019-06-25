@@ -17,4 +17,3 @@ def register_course(coursebase, userbase, activeuser):
             return # return if the course requested is at capacity
     print("\nFailed to register\n")
     return
-

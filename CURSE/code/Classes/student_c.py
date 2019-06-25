@@ -6,6 +6,8 @@ class Student(User):
 
         self.major = major              # So What's Your Major?
         self.crns = []                  # List of courses that the student is registered in
+        self.course_limit = 4
+
     def add_course(self,crn_code):
         self.crns.append(crn_code)
     def view_schedule(self, coursebase):

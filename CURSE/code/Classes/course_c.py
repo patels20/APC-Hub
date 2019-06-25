@@ -6,7 +6,6 @@ class Course():
         self.roster = []                # List of Student Users Currently registered
         self.max_size = max_size        # Size limit of the the course
         self.major = major
-
         self.length_course = length_course     # the actual length of the course
         self.times = []                 # The Index values correspond with each other
         self.days = []                  #
