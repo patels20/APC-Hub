@@ -1,9 +1,9 @@
 from Classes.user_c import *
 class Proffesor(User):
     def __init__(self, crn="33"):
-        User.__init__(self, user_id = "a", first_name = "yeet",last_name = "teey", passcode = "a")
+        User.__init__(self, user_id = "a", first_name = "ye",last_name = "et", passcode = "a")
         self.crns = []
-        self.crns.append(crn)
+        # crn = 33 is unused at the moment
     def view_rosters(self,coursebase, userbase):
         for crn in self.crns:
             for course in coursebase:

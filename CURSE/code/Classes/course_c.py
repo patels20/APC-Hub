@@ -15,11 +15,14 @@ class Course():
         if len(self.roster) >= self.max_size:  # Checks for course capacity
             print("ERROR COURSE AT CAPACITY")
             return 0            # Wait untill implemented
+
         else:
             self.roster.append(student)         # if there's no conflicts add the student to the roster
             return 1
     def print_course(self):
-        print("\nCrn code: " + self.crn + "   Course: " + self.name + "   Instructor: " + self.instructor + "   Major: " + self.major + " Capacity: " + str(self.max_size)  + " Open Seats: " + str(self.max_size - len(self.roster)))
+        print("\nCrn code: " + str(self.crn)+ "   Course: " + self.name + "   Instructor: " + self.instructor + "   Major: " + self.major + " Capacity: " + str(self.max_size)  + " Open Seats: " + str( self.max_size - len(self.roster) ) )
+
+
     def print_roster(self):
         for x in self.roster:
             print(x.first_name)
