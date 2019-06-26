@@ -1,0 +1,27 @@
+from Classes.course_c import Course
+from Functions.print_proffesor_f import print_proffesors
+from Classes.proffesor_c import Proffesor
+
+
+def create_course(coursebase, userbase, activeuser):
+
+    new_course = Course(input("\nInput CRN: \n"),input("Input Course Name: \n"),"THIS NEEDS TO BE A USER", input("\nInput the number of hours the course is:\n"),int(input("Input Max number of students: \n")),input("\nInput Major: \n"))
+    print_proffesors(userbase)
+    temp = input("\nInput the ID of the professor for this new course: \nInput 0 if no proffesor\n")
+
+    if temp != "0":
+        for teacher in userbase:
+            if teacher.__class__ == Proffesor:  # if the user id matches a teacher
+                if temp == teacher.user_id:
+
+                    new_course.instructor = teacher.user_id     # add the teacher to the class data
+                    new_course.print_course()                   # print the new course created
+                    coursebase.append(new_course)               # Update the database
+                    teacher.crns.append(new_course.crn)         # Update the user in database
+                    break
+    else:
+        print("course added to database without an instructor")           # if the input didn't match an ID
+        new_course.print_course()
+        coursebase.append(new_course)
+
+    return

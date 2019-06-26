@@ -1,6 +1,5 @@
 from Classes.student_c import Student
 from Classes.proffesor_c import Proffesor
-from Classes.admin_c import Admin
 from Classes.user_c import User
 
 from Classes.course_c import Course
@@ -15,6 +14,7 @@ def create_user():  # This function
     return temp
 
 
+
 def create_student():
     new_student = create_user()
     new_student.__class__ = Student
@@ -23,6 +23,5 @@ def create_student():
 def create_proffesor():
     new_proffesor = create_user()
     new_proffesor.__class__ = Proffesor
-
-
+    new_proffesor.crn.clear()
 
