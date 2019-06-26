@@ -1,8 +1,12 @@
+from Functions.print_courses_f import print_courses
+
+
 def register_course(coursebase, userbase, activeuser):
     #  This function has the user input a CRN-
     #  code and attempts to register for it
 
-    temp = input("Input the crn value of the course you want to register :\n")
+    print_courses(coursebase)
+    temp = input("\nInput the crn value of the course you want to register :\n")
     for course in coursebase:
         if temp == course.crn:                      # if the course exists attempt to register the active user
             #this function will check if the student can be added to the course and return a 1 if successfull
