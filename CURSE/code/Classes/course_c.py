@@ -23,12 +23,10 @@ class Course():
     def add_student(self, student):
         for x in self.crns(0, self.grade - 1):
             for z in self.crns:
-                if (self.crn == self.crns[x, z]):
+                if (self.crn == self.crns[x, z]):    #Checks previous years for completed prerequsites
                     return 1
                 else:
                     return 0
-
-
         if len(self.roster) >= self.max_size:  # Checks for course capacity
             print("ERROR COURSE AT CAPACITY")
             return 0            # Wait untill implemented
