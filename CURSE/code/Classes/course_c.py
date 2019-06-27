@@ -22,20 +22,21 @@ class Course():
         self.days = []                  #
 
 
-    def add_student(self, student):
+    def add_student(self, student):        
         print(student.grade)
-        for x in student.crns[0][student.grade]:
-            for z in student.crns:
-                if (student.crn == student.crns[x, z]):    #Checks previous years for completed prerequsites
-                    return 1
-                else:
-                    return 0
         if len(self.roster) >= self.max_size:  # Checks for course capacity
             print("ERROR COURSE AT CAPACITY")
-            return 0            # Wait untill implemented
-        else:
-            self.roster.append(student)         # if there's no conflicts add the student to the roster
-            return 1
+            return 0            
+        else: # if the course has open seats
+            for x in student.crns[0][student.grade]:    #COMMENT ME
+                for z in student.crns:                  #COMMENT ME whats being itterated through????? 
+                    if (student.crn == student.crns[x, z]):    #Checks previous years for completed prerequsites
+                        self.roster.append(student)            # if there's no conflicts add the student to the roster
+                        return 1
+                    
+            print("ERROR COURSE AT CAPACITY") 
+            return 0
+        
     def print_course(self):
         print("\nCrn code: " + self.crn + "   Course: " + self.name + "   Instructor: " + self.instructor + "   Major: " + self.major + " Capacity: " + str(self.max_size)  + " Open Seats: " + str(self.max_size - len(self.roster)))
     def print_roster(self):
