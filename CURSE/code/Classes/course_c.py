@@ -1,4 +1,6 @@
 from Functions.log_on_f import log_on
+from Classes.student_c import *
+
 
 class Course():
     def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
@@ -21,9 +23,10 @@ class Course():
 
 
     def add_student(self, student):
-        for x in self.crns(0, self.grade - 1):
-            for z in self.crns:
-                if (self.crn == self.crns[x, z]):    #Checks previous years for completed prerequsites
+        print(student.grade)
+        for x in student.crns[0][student.grade]:
+            for z in student.crns:
+                if (student.crn == student.crns[x, z]):    #Checks previous years for completed prerequsites
                     return 1
                 else:
                     return 0
