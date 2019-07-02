@@ -23,19 +23,42 @@ class Course():
 
 
     def add_student(self, student):        
-        print(student.grade)
-        if len(self.roster) >= self.max_size:  # Checks for course capacity
+
+        if len(self.roster) < self.max_size:  # Checks for course capacity
+            if self.grade_level <= student.grade: # checks for appropriate
+                if len(self.restrictions) > 0 :
+                    conflict = True
+
+                    for rec in self.restrictions:
+                        for course in student.crns:
+                            # if the student has taken the prerec make conflict false and stop checking
+                            if course == rec:
+                                conflict = False
+                                break
+
+                        #  If the course is there
+                        if conflict == False:
+                            conflict = True
+                            # if it's the last course in the prerec list
+                            if rec == self.restrictions[len(self.restrictions)-1]:
+                                self.roster.append(student)  # if there's no conflicts add the student to the roster
+                                return 1
+
+                        else:
+                            print("\nYOU LACK THE NECESARY PRE-REQUIRMENTS\n")
+                            break
+
+                else:
+                    # If there's no Restrictions
+                    self.roster.append(student)
+                    return 1
+
+            else:
+                print("\nYOU REQUIRE MORE XP FOR THIS QUEST\n")
+
+        else: # this else block will check
             print("ERROR COURSE AT CAPACITY")
-            return 0            
-        else: # if the course has open seats
-            for x in student.crns[0][student.grade]:    #COMMENT ME
-                for z in student.crns:                  #COMMENT ME whats being itterated through????? 
-                    if (student.crn == student.crns[x, z]):    #Checks previous years for completed prerequsites
-                        self.roster.append(student)            # if there's no conflicts add the student to the roster
-                        return 1
-                    
-            print("ERROR COURSE AT CAPACITY") 
-            return 0
+        return 0
         
     def print_course(self):
         print("\nCrn code: " + self.crn + "   Course: " + self.name + "   Instructor: " + self.instructor + "   Major: " + self.major + " Capacity: " + str(self.max_size)  + " Open Seats: " + str(self.max_size - len(self.roster)))
