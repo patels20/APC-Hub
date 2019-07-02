@@ -4,7 +4,7 @@ from Classes.student_c import *
 
 class Course():
     def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
-                 grade = "junior"):
+                 grade = 1):
         self.crn = crn                  # Unique identifier
         self.name = name                # Name of the course
         self.instructor = instructor    # Name of the Teacher user that teaches
@@ -25,7 +25,7 @@ class Course():
     def add_student(self, student):        
 
         if len(self.roster) < self.max_size:  # Checks for course capacity
-            if self.grade_level <= student.grade: # checks for appropriate
+            if int(self.grade_level) <= int(student.grade): # checks for appropriate
                 if len(self.restrictions) > 0 :
                     conflict = True
 
