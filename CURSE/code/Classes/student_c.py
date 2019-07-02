@@ -9,6 +9,7 @@ class Student(User):
         self.course_limit = 4           # Number of courses per semester
         self.grade = grade              # A students current grade level
 
+
     def add_course(self,crn_code):
         self.crns.append(crn_code)
     def view_schedule(self, coursebase):
