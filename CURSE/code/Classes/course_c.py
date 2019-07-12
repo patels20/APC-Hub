@@ -3,7 +3,7 @@ from Classes.student_c import *
 
 
 class Course():
-    def __init__(self, crn="33", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
+    def __init__(self, crn="", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
                  grade = 1):
         self.crn = crn                  # Unique identifier
         self.name = name                # Name of the course
