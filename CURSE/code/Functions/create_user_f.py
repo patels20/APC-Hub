@@ -14,14 +14,15 @@ def create_user():  # This function
     return temp
 
 
-
-def create_student():
+def create_student(entire_userbase):
     new_student = create_user()
     new_student.__class__ = Student
     new_student.major = input("\nInput the Student's major: \n")
+    entire_userbase.append(new_student)  # adds the user to the userbase after the student is created
 
-def create_proffesor():
+
+def create_proffesor(entire_userbase):
     new_proffesor = create_user()
     new_proffesor.__class__ = Proffesor
-    new_proffesor.crn.clear()
-
+    # new_proffesor.crn.clear()
+    entire_userbase.append(new_proffesor)  # adds the professor to the userbase after they are created
