@@ -4,7 +4,7 @@ from insert_f import insert
 
 
 def menu():
-    temp = input("\nWhich Option?\n0 - END PROGRAM\n1 - SEARCH BY DEPARTMENT\n2 - PRINT ALL\n3 - INSERT INTO A DATABASE\n")
+    temp = input("\nWhich Option?\n0 - END PROGRAM\n1 - SEARCH DATABASE\n2 - PRINT ALL\n3 - INSERT INTO A DATABASE\n")
     if temp == "0":  # ends program
         exit("PROGRAM TERMINATED:\nNO ERROR")
     elif temp == "1":  # search for something

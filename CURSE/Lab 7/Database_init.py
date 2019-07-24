@@ -9,7 +9,7 @@ database = sqlite3.connect("Database")
 # cursor objects are used to traverse, search, grab, etc. information from the database, similar to indices or pointers
 cursor = database.cursor()
 
-
+#reset the tables:
 sql_command = """
 DROP TABLE STUDENT;"""
 cursor.execute(sql_command)
@@ -22,8 +22,27 @@ sql_command = """
 DROP TABLE ADMIN;"""
 cursor.execute(sql_command)
 
+#####################################################################
+#SQL command to create a table in the database:
+sql_command = """CREATE TABLE COURSE (  
+CRN         INT 	PRIMARY KEY 	NOT NULL,
+NAME		TEXT	NOT NULL,
+ROSTER      TEXT    
+);"""
+cursor.execute(sql_command)
 
+#This creates the course that a student is going to be signed up for, however,
+# the class roster is going to be a separate table. Every course must have a class roster.
 
+sql_command = """CREATE TABLE COURSEROSTER (
+CRN         INT     FOREIGN KEY,
+SEAT1       TEXT,
+SEAT2       TEXT,
+SEAT3       TEXT,
+SEAT4       TEXT
+);"""
+
+cursor.execute(sql_command)
 ######################################################################
 # SQL command to create a table in the database
 sql_command = """CREATE TABLE STUDENT (  
@@ -34,10 +53,9 @@ GRADYEAR	INT 	NOT NULL,
 MAJOR		CHAR(4) NOT NULL,
 EMAIL		text	NOT NULL)
 ;"""
-
 # execute the statement1
-
 cursor.execute(sql_command)
+
 ######################################################################
 # SQL command to create a table in the database
 sql_command = """CREATE TABLE INSTRUCTOR (  
