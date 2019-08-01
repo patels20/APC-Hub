@@ -1,3 +1,25 @@
+
+TODO:
+- Database of classes
+- Database of students
+- Search/sort/data structure: user requested sort by time, subject, etc.
+- Semester choice
+- Sheduling prefrences
+- TESTING with the students specified 
+
+DONE:
+- USER LOG ON
+- SCHEDULE PRINTOUT
+- PROFFESOR, STUDENT, REGISTRAR view
+- Proffesor view of courses
+- Student view of catalog and course schedule
+- Master view
+
+
+
+
+
+
 - This is where the code will live
 - From now on every function/class that is made will get it's own file so we can all work on different things at the same time
 - functions end with _f
