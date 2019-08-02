@@ -6,6 +6,8 @@ class trimester(Enum):
     Fall = 3
 
 class Semester():
-    def __init__(self):
-        self.year = 2000
-        self.season = trimester.Fall
+    def __init__(self, year, season):
+        self.year = year
+        self.season = season
+
+

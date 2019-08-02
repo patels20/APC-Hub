@@ -20,8 +20,8 @@ class Course():
         self.length_course = length_course     # the actual length of the course
         self.times = []                 # The Index values correspond with each other
         self.days = []                  #
-        self.semester = Semester()
-        
+        self.semester = Semester(1999,trimester.Fall)
+
 
     def add_student(self, student):        
 

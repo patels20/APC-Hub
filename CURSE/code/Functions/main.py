@@ -4,12 +4,13 @@ from Functions.log_on_f import log_on
 from Functions.run_student_f import run_student
 from Functions.run_admin_f import run_admin
 from Functions.run_proffesor_f import run_proffesor
-
+from Classes.semester_c import *
 
 def main():  # The logic of the program will happen in here to make sure nearly everything is defined in a method
     current_state = System_state(1)     # The Initialized state of the program is log_on to run that specific functionality
 
     semester = []
+    semester.append(Semester(2000,trimester.Fall))
 
     test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
     create_test_student(test_userbase)  # Adds a student to the "database"
@@ -26,6 +27,7 @@ def main():  # The logic of the program will happen in here to make sure nearly 
 
 
     while 1:                            # infinite loop to run infinitely
+
         if current_state == System_state.log_on:   # switch-case depending on the state of the program
             current_state = log_on(test_userbase, active_user)  # the function returns the new state of the system
         elif current_state == System_state.error:                # if there's an error the program ends to let you know there's some flawed code
