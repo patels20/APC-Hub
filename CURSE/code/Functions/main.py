@@ -9,6 +9,8 @@ from Functions.run_proffesor_f import run_proffesor
 def main():  # The logic of the program will happen in here to make sure nearly everything is defined in a method
     current_state = System_state(1)     # The Initialized state of the program is log_on to run that specific functionality
 
+    semester = []
+
     test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
     create_test_student(test_userbase)  # Adds a student to the "database"
     create_initial_admin(test_userbase)  # Adds an admin from the "database"
@@ -20,6 +22,8 @@ def main():  # The logic of the program will happen in here to make sure nearly 
     active_user = []                    # this is a temporary workaround until someone thinks of a better way to pass data around
                                         # This user's data is saved for refrence
                                         # there should never be more than 1 item in this list
+
+
 
     while 1:                            # infinite loop to run infinitely
         if current_state == System_state.log_on:   # switch-case depending on the state of the program

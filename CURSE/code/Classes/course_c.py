@@ -1,6 +1,6 @@
 from Functions.log_on_f import log_on
 from Classes.student_c import *
-
+from Classes.semester_c import *
 
 class Course():
     def __init__(self, crn="", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
@@ -20,7 +20,8 @@ class Course():
         self.length_course = length_course     # the actual length of the course
         self.times = []                 # The Index values correspond with each other
         self.days = []                  #
-
+        self.semester = Semester()
+        
 
     def add_student(self, student):        
 

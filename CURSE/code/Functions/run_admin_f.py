@@ -8,7 +8,7 @@ from Functions.print_student_f import print_students
 from Functions.print_proffesor_f import print_proffesors
 
 def run_admin(coursebase, userbase, activeuser):
-    temp = input("\nWhich Option?\n0 - Logout\n1 - Add a course\n2 - Delete a course\n3 - View Coursebase\n4 - create student\n5 - create Professor\n6 - print studentbase\n7 - print proffesorbase\n")
+    temp = input("\nWhich Option?\n0 - Logout\n1 - Add a course\n2 - Delete a course\n3 - View Coursebase\n4 - create student\n5 - create Professor\n6 - print studentbase\n7 - print proffesorbase\n8 - select semester")
     if temp == "0":  # logs the user out
         return logout(activeuser)
     elif temp == "1":
@@ -25,6 +25,10 @@ def run_admin(coursebase, userbase, activeuser):
         print_students(userbase)
     elif temp == "7":
         print_proffesors(userbase)
+    elif temp == "8":
+        # generate a new semester / select active semester
+        pass
+
     else:
         print("\n INVALID INPUT\n")
     return System_state.run_admin
