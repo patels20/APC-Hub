@@ -4,7 +4,7 @@ from Classes.semester_c import *
 
 class Course():
     def __init__(self, crn="", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
-                 grade = 1):
+                 grade = 1, semester = Semester(1999,trimester.Fall)):
         self.crn = crn                  # Unique identifier
         self.name = name                # Name of the course
         self.instructor = instructor    # Name of the Teacher user that teaches
@@ -20,7 +20,7 @@ class Course():
         self.length_course = length_course     # the actual length of the course
         self.times = []                 # The Index values correspond with each other
         self.days = []                  #
-        self.semester = Semester(1999,trimester.Fall)
+        self.semester = semester
 
 
     def add_student(self, student):        
