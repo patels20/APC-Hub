@@ -3,7 +3,6 @@ TODO:
 - Database of classes
 - Database of students
 - Search/sort/data structure: user requested sort by time, subject, etc.
-- Semester choice
 - Sheduling prefrences
 - TESTING with the students specified 
 
@@ -14,6 +13,7 @@ DONE:
 - Proffesor view of courses
 - Student view of catalog and course schedule
 - Master view
+- Semester Choice
 
 
 
