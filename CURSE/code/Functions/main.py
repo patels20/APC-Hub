@@ -17,7 +17,11 @@ def main():  # The logic of the program will happen in here to make sure nearly 
     create_initial_admin(test_userbase)  # Adds an admin from the "database"
     create_test_teacher(test_userbase)
 
-    test_coursebase = []                # Temporary class database
+    test_coursebase = [Course("12345", "Computer Architect", "Marisha Rawlins", 3, 8, "Electrical Engineering", 3),
+                       Course("3550", "Computer Networks", "Wayne Bynoe", 3, 8, "Computer Engineering", 3),
+                       Course("3600", "Signal and Systems", "Saurav Basnet", 4, 8, "Computer and Electrical Engineering", 3),
+                       Course("3225", "Applied Programming Concepts", "Aaron Carpenter", 5, 8, "Copmuter and Electrical Engineering", 3),
+                       Course("4829", "Junior Design", "The Trifecta", 10, 8, "Anything Engineering", 3)]                # Class database
     create_test_course(test_coursebase) # Adds a class to the "database"
 
     active_user = []                    # this is a temporary workaround until someone thinks of a better way to pass data around
