@@ -5,10 +5,23 @@ from Classes.admin_c import Admin
 
 
 
-def log_on( userbase, activeuser):
+def log_on( userbase, activeuser,semesterlist, activesemester):
+
+    temp = input("\nEnter Semester Year:\n")
+    orary = input("\nEnter Semester Season:\nspring, summer, fall\n")
+    for time in semesterlist:
+        if int(temp) == time.year and orary == time.season:
+            activesemester.clear()
+            activesemester.append(time)
+            break
+        else:
+            print("INCORRECT SEASON INPUT")
+            return System_state.log_on
+
+
+
     temp = input("\nENTER USERNAME:\n")    # take in user log on info
     orary = input("\nENTER PASSCODE:\n")     #
-
     for dude in userbase:                   # Increment's through the list of people in the database
         if temp == dude.user_id and orary == dude.passcode:  # If the credentials match!
             # save the user info to the list

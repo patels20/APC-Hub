@@ -4,7 +4,7 @@ from Classes.semester_c import *
 
 class Course():
     def __init__(self, crn="", name="Binary for Bozos", instructor="THIS NEEDS TO BE A USER", length_course=1, max_size=2, major = "cs",
-                 grade = 1, semester = Semester(1999,trimester.Fall)):
+                 grade = 1, semester = Semester(2000,"Fall")):
         self.crn = crn                  # Unique identifier
         self.name = name                # Name of the course
         self.instructor = instructor    # Name of the Teacher user that teaches
