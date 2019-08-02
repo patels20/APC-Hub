@@ -12,7 +12,17 @@ def main():  # The logic of the program will happen in here to make sure nearly 
     semester = []
     semester.append(Semester(2000,"fall"))
     semester.append(Semester(2001, "spring"))
-    test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
+    test_userbase = [Student("29412","Ameer","Noufal","iHatecats","Computer Engineering",3),
+                     Student("17412","Shail","Patel","Hobart","Electrical Engineering",3),
+                     Student("75125","Dan","Smith-De Paz","iLovedogs","Biomedical Engineering",3),
+                     Student("61241","Chandler","Bing","monica","Comedian Engineering",1),
+                     Student("23429","Scooby","Doo","monsterinc","Civil Engineering",4),
+                     Student("91284","Tom","Brady","hateFutball","Sports Marketing Engineering",4),
+                     Student("28352","Donald","Obama","2020","Political Engineering",2),
+                     Student("84242","Joe","Sanders","3030","Computer Engineering",2),
+                     Student("42099","Area","Fifty-One","5151","Electrical and Computer Engineering",2),
+                     Student("89123","Sheep","Goat","baaaa","Mechanical Engineering",1)]                  # hopefully this gets replaced with some sort of actual database system
+  
     create_test_student(test_userbase)  # Adds a student to the "database"
     create_initial_admin(test_userbase)  # Adds an admin from the "database"
     create_test_teacher(test_userbase)
