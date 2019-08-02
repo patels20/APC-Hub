@@ -11,7 +11,7 @@ def main():  # The logic of the program will happen in here to make sure nearly 
 
     semester = []
     semester.append(Semester(2000,"fall"))
-
+    semester.append(Semester(2001, "spring"))
     test_userbase = []                  # hopefully this gets replaced with some sort of actual database system
     create_test_student(test_userbase)  # Adds a student to the "database"
     create_initial_admin(test_userbase)  # Adds an admin from the "database"
