@@ -1,9 +1,11 @@
 from Classes.user_c import *
 class Student(User):
-    def __init__(self, major="CM", grade=1):
-        User.__init__(self, user_id="", first_name="Ben", last_name="Dover", passcode="")
+    def __init__(self, user_id="", first_name="Ben", last_name="Dover", passcode="",major="CM", grade=1):
         # initialize the user parts of the student class
-
+        self.user_id = user_id;
+        self.first_name = first_name;
+        self.last_name = last_name
+        self.passcode=passcode;
         self.major = major              # So What's Your Major?
         self.crns = []                  # List of courses that the student is registered in
         self.course_limit = 4           # Number of courses per semester
