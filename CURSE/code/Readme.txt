@@ -1,9 +1,10 @@
+FOR CARPENTER:
+Have both folders in the same directory then run the main.py file from the Functions folder
+
 
 TODO:
 - Database of classes
 - Database of students
-- Search/sort/data structure: user requested sort by time, subject, etc.
-- Sheduling prefrences
 - TESTING with the students specified 
 
 DONE:
@@ -14,7 +15,7 @@ DONE:
 - Student view of catalog and course schedule
 - Master view
 - Semester Choice
-
+- Search/sort/data structure: user requested sort by time, subject, etc.
 
 
 
